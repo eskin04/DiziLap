@@ -1,0 +1,60 @@
+<div id="background">
+  <div class="container">
+    <div id="flex">
+      <div id="imageDiv">
+        <img src="../../assets/image/film_img/{{selectedMovie.image}}" alt="">
+      </div>
+      <div id="textDiv">
+        <h3>{{selectedMovie.name}}</h3>
+        <a>{{selectedMovie.type}}</a>
+        <p>{{selectedMovie.description}}</p>
+        <div id="director"><span>Yönetmen : </span> {{selectedMovie.director}}</div>
+        <div id="actors"><span id="actorName">Oyuncular : </span> <span *ngFor="let actor of actors">{{actor}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="box">
+      <div id="imdb"><i class="fas fa-star"></i><span>{{selectedMovie.imdb}}</span> IMDB</div>
+      <div id="adres">
+        <a href="https://www.instagram.com/okan.eskin/" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
+        <a href="https://github.com/eskin04" target="_blank"><i class="fab fa-github"></i>Github</a>
+      </div>
+
+    </div>
+
+    <div id="ad">
+      <img src="../../assets/image/ad_img/detail_ad.gif" alt="">
+    </div>
+
+    <div id="video">
+      <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY">
+      </iframe>
+    </div>
+
+    <div id="comments" [ngStyle]='changeMainHeight()'>
+      <h3>Yorumlar <a (click)='clickOnComments(collapse)'><i class="fas" [class.fa-chevron-down]='iClass'
+            [class.fa-chevron-up]='!iClass'></i></a></h3>
+
+      <div id='collapse' class="height" [ngStyle]='changeHeight()' #collapse>
+        <div class="card" *ngFor="let comment of selectedComments">
+          <div class="card-header">
+            <div id="image">
+              <img src="../../assets/image/film_img/{{comment.profil}}" alt="">
+            </div>
+            <div id="title">
+              <h5 class="card-title">{{comment.name}}</h5>
+              <span>{{comment.time}}</span>
+            </div>
+
+
+          </div>
+          <div class="card-body">
+
+            <p class="card-text">{{comment.comment}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

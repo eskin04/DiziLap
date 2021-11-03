@@ -1,0 +1,101 @@
+<nav class="navbar navbar-expand-lg  navbar-dark" id="navbar">
+  <div class="container-fluid">
+    <a [routerLinkActiveOptions]='{exact:true}' routerLinkActive='active' id="navbarBrand" class="navbar-brand"
+      routerLink=''>DiziLap</a>
+    <a id="toggle" (click)='toggled(collaps)'>
+      <i [class.fa-times]='!none' class="fas fa-bars"></i>
+    </a>
+    <div #collaps class="collaps " [class.responsive]='none'>
+      <ul class="navbar-nav  mb-2 mb-lg-0 ">
+        <li class="nav-item ms-4 me-3">
+          <a routerLinkActive='active' (click)='reloadCategory("/series")' class="nav-link fw-bold"
+            aria-current="page"><i class="fas fa-tv"></i>
+            Diziler</a>
+        </li>
+        <li class="nav-item me-auto ms-4">
+          <a routerLinkActive='active' (click)='reloadCategory("/movie")' class="nav-link fw-bold"><i
+              class="fas fa-film"></i>
+            Filmler</a>
+        </li>
+        <li class="nav-item dropdown me-lg-auto ms-lg-4 fw-bold " id="dropdownMenu">
+          <a class="nav-link" role="button">
+            <i class="fas fa-list-ul"></i> Türler
+          </a>
+          <div id="dropDiv" #dropdownMenu>
+            <div id="ok"></div>
+            <div id="list">
+
+              <div (click)='reloadType("dram")'><a>Dram</a></div>
+              <div (click)='reloadType("komedi")'><a>Komedi</a></div>
+              <div (click)='reloadType("suç")'><a>Suç</a></div>
+              <div (click)='reloadType("korku")'><a>Korku</a></div>
+              <div (click)='reloadType("gerilim")'><a>Gerilim</a></div>
+              <div (click)='reloadType("aksiyon")'><a>Aksiyon</a></div>
+              <div (click)='reloadType("bilim kurgu")'><a>Bilim Kurgu</a></div>
+
+
+            </div>
+          </div>
+        </li>
+
+
+      </ul>
+      <div class="mx-auto " id="search">
+        <input (keyup)='getSearch(search)' #search class="form-control me-2" type="search" placeholder="Ara...">
+        <a type="button"><i class="fas fa-search"></i></a>
+        <ul *ngIf="search.value!==''" class="list-group">
+          <li (click)='reload(search,item)' href='' *ngFor="let item of get5" class="list-group-item">
+            <span>{{item.category}}</span>{{item.name}}</li>
+
+        </ul>
+      </div>
+
+      <ul class="navbar-nav ms-lg-auto me-lg-5">
+        <li class="nav-item ms-lg-auto">
+          <button #Sign id="signin" class="nav-link" (click)='show()' type="button"><i class="fas fa-user"></i>
+            Giriş</button>
+
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title fw-bold fs-3" id="myModalLabel">Giriş</h4>
+        <button id="times" type="button" class="btn btn-dark" data-dismiss="modal"
+          (click)="hide();email.value='';password.value=''"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="form-group mb-4 mt-4 text-dark">
+
+            <input #email placeholder="Email..." type="text" formControlName="email" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.required">Email is required</div>
+              <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+            </div>
+          </div>
+          <div class="form-group mb-5 text-dark">
+
+            <input (keyup.enter)="getSubmit(email.value,password.value,Sign);email.value='';password.value=''" #password
+              placeholder="Password..." type="password" formControlName="password" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Password is required</div>
+              <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+            </div>
+          </div>
+          <button id="submitted" (click)="getSubmit(email.value,password.value,Sign);email.value='';password.value=''"
+            type="submit" class="btn btn-primary mb-3">Giriş</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

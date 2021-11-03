@@ -1,0 +1,62 @@
+<div id="head">
+  <div id="header" class="container">
+    <h1 class="heading">
+      <span id="title1">“Its only after we have lost everything that we are free to do anything.”</span>
+      <span id="title2">Fight Club</span>
+    </h1>
+  </div>
+</div>
+
+<div id="background">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9">
+        <div class="cardHead">
+          <h2>Filmler</h2>
+          <a [routerLink]='["/movie"]'><i class="fas fa-plus"></i>Daha Fazla</a>
+        </div>
+        <div class="cards">
+          <a class="p" *ngFor="let movie of selectedMovies" (click)='reload(movie.category,movie.id)'>
+            <div class="card rounded-3 mt-3">
+              <div class="image ">
+                <span><i class="fas fa-play"></i></span>
+
+                <img src="../../assets/image/film_img/{{movie.image}}" class=" card-img-top w-100">
+              </div>
+
+              <div class="card-body">
+                <p class="card-text text-white">{{movie.name}}</p>
+                <p class="card-text text-white fw-bold"><span>IMDB</span> {{movie.imdb}}</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="cardHead mt-5">
+          <h2>Diziler</h2>
+          <a [routerLink]='["/series"]'><i class="fas fa-plus"></i>Daha Fazla</a>
+        </div>
+        <div class="cards">
+          <a class="p" *ngFor="let movie of selectedSeries" (click)='reload(movie.category,movie.id)'>
+            <div class="card rounded-3 mt-3">
+              <div class="image">
+                <span><i class="fas fa-play"></i></span>
+                <img src="../../assets/image/film_img/{{movie.image}}" class=" card-img-top w-100">
+
+              </div>
+              <div class="card-body">
+                <p class="card-text text-white">{{movie.name}}</p>
+                <p class="card-text text-white fw-bold"><span>IMDB</span> {{movie.imdb}}</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <app-ad></app-ad>
+      </div>
+
+    </div>
+
+  </div>
+</div>

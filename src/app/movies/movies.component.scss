@@ -1,0 +1,126 @@
+
+#h{
+  background-color: black;
+  padding-top: 50px;
+}
+
+#cardHead{
+  text-align: start;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #848484;
+  font-family: 'Work Sans', sans-serif;
+
+  h2{
+    color: #A78930;
+    font-weight: bolder;
+
+  }
+}
+
+
+#cards{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  cursor: pointer;
+  #p{
+    padding: 5px 15px;
+
+    .card{
+      background-color: black;
+
+      #image{
+        overflow: hidden;
+        position: relative;
+        &:hover img{
+          filter: blur(3px);
+          transform: scale(1.3);
+          opacity: .4;
+        }
+        &:hover span{
+          transform: translate(-50%,-50%) scale(1);
+
+
+        }
+        span{
+          position: absolute;
+          left: 50%;
+          top: 50%;
+
+          border: 1px solid white;
+          border-radius: 50%;
+          padding: 17px 23px;
+          transform: translate(-50%,-50%) scale(.1)  ;
+          color: white;
+
+
+          transition: all .5s ease-in-out;
+          i{
+            font-size: 15px;
+          }
+        }
+        img{
+          transition: all .5s ease-in-out;
+          transform: scale(1);
+
+        }
+      }
+
+      p{
+        font-size: 15px;
+
+        span{
+          color: #848484;
+        }
+      }
+    }
+  }
+
+}
+
+
+
+#button{
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  button{
+    margin: 2px 5px;
+    color: white;
+    transition: all 300ms;
+    font-weight: bolder;
+
+    &:hover{
+      color:white;
+      background-color: #A78930;
+
+
+
+    }
+  }
+}
+
+
+@media only screen and (max-width:991px){
+
+  #cards{
+    #p{
+      width: 33%;
+      img{
+        min-height: 165px;
+
+      }
+    }
+  } }
+
+  @media only screen and (min-width:992px){
+
+    #cards{
+      #p{
+        width: 20%;
+
+        img{
+         min-height: 300px;
+        }
+      }
+    }}

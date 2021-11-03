@@ -1,0 +1,44 @@
+<div id="h">
+  <div class="container">
+    <div id="cardHead">
+      <h2>{{h2}}</h2>
+    </div>
+
+    <div id="cards">
+      <div id="p" *ngFor="let movie of movieList" [routerLink]='["/",movie.category,"detail",movie.id]'>
+        <div class="card rounded-3 mt-3">
+          <div id="image">
+            <span><i class="fas fa-play"></i></span>
+
+            <img src="../../assets/image/film_img/{{movie.image}}" class=" card-img-top w-100">
+          </div>
+
+          <div class="card-body">
+            <p class="card-text text-white">{{movie.name}}</p>
+            <p class="card-text text-white fw-bold"><span>IMDB</span> {{movie.imdb}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="button">
+      <button (click)='prevNum();scrollTop()' [class.disabled]='sayi==1' class="btn btn-outline-secondary"> <i
+          class="fas fa-angle-double-left"></i> Önceki</button>
+      <button class="btn btn-outline-secondary" [ngClass]='activeButton(1)' (click)='getTen(1) ;scrollTop()'>1</button>
+      <button class="btn btn-outline-secondary disabled" *ngIf="maxNumber>4 && sayi>=4">...</button>
+      <button class="btn btn-outline-secondary" [ngClass]='activeButton(newSayi-1)'
+        (click)='getTen(newSayi-1) ;scrollTop()' *ngIf="maxNumber>2">{{newSayi-1}}</button>
+      <button class="btn btn-outline-secondary" [ngClass]='activeButton(newSayi)' (click)='getTen(newSayi) ;scrollTop()'
+        *ngIf="maxNumber>3">{{newSayi}}</button>
+      <button class="btn btn-outline-secondary" [ngClass]='activeButton(newSayi+1)'
+        (click)='getTen(newSayi+1) ;scrollTop()' *ngIf="maxNumber>4">{{newSayi+1}}</button>
+      <button class="btn btn-outline-secondary disabled" *ngIf="newSayi+3<=maxNumber">...</button>
+      <button class="btn btn-outline-secondary" [ngClass]='activeButton(maxNumber)'
+        (click)='getTen(maxNumber) ;scrollTop()' *ngIf="maxNumber">{{maxNumber}}</button>
+      <button (click)='nextNum() ;scrollTop()' [class.disabled]='active' class="btn btn-outline-secondary">Sonraki <i
+          class="fas fa-angle-double-right"></i></button>
+
+
+    </div>
+  </div>
+</div>

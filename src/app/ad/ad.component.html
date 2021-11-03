@@ -1,0 +1,88 @@
+<div id="warning">
+  ✅ GÜVENİLİR BAHİS SİTELERİ ✅
+</div>
+
+<div class="card text-white bg-dark">
+  <div id="row">
+    <div class="col3">
+      <img src="../../assets/image/ad_img/2.jpg" class=" card-img img-thumbnail">
+    </div>
+    <div class="col6">
+      <div class="card-body">
+        <p class="card-text">
+          <span>⭐Bonus Yok⭐</span>
+          5 Dakika Çekim Hızı
+        </p>
+      </div>
+    </div>
+    <div class="col3">
+      <div>
+        <button class="btn btn-secondary btn-sm">Detaylar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card text-white bg-dark" *ngFor="let gif of gifList">
+  <div id="row">
+    <div class="col3">
+      <img src="../../assets/image/ad_img/{{gif}}" class=" card-img img-thumbnail">
+    </div>
+    <div class="col6">
+      <div class="card-body">
+        <p class="card-text">
+          <span>⭐50 ₺ Ücretsiz⭐</span>
+          5 Dakika Çekim Hızı
+        </p>
+      </div>
+    </div>
+    <div class="col3">
+      <div>
+        <button class="btn btn-secondary btn-sm">Detaylar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="card text-white bg-dark">
+  <div id="row">
+    <div class="col3">
+      <img src="../../assets/image/ad_img/5.jpeg" class=" card-img img-thumbnail">
+    </div>
+    <div class="col6">
+      <div class="card-body">
+        <p class="card-text">
+          <span>⭐Bonus Yok⭐</span>
+          5 Dakika Çekim Hızı
+        </p>
+      </div>
+    </div>
+    <div class="col3">
+      <div>
+        <button class="btn btn-secondary btn-sm">Detaylar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<h4>En çok izlenenler</h4>
+<a id="movies" class="card" *ngFor="let item of allList" (click)='reload(item.category!,item.id!)'>
+  <div class="row">
+    <div class="col-1">
+      {{item.id}}
+    </div>
+    <div class="col-3">
+      <img src="../../assets/image/film_img/{{item.image}}" class="card-img">
+    </div>
+    <div class="col-8">
+      <div class="card-body">
+        <p class="card-title fw-bold">{{item.name}}</p>
+        <span class="card-text">IMDB:{{item.imdb}}</span>
+        <span class="card-text">{{item.director}}</span>
+      </div>
+
+    </div>
+  </div>
+
+</a>
